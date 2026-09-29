@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Ambientes virtuais
+.venv/
+
+# Empacotamento e builds
+build/
+build_*/
+dist/
+*.spec.bak
+
+# Saidas locais
+PDFs_Fundacao/
+*.log

@@ -1,0 +1,5 @@
+aiohttp
+requests
+pyinstaller
+scikit-learn
+openpyxl
