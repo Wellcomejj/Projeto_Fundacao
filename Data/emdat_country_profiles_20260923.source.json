@@ -1,9 +1,0 @@
-{
-  "fonte": "EM-DAT Country Profiles via Humanitarian Data Exchange (HDX)",
-  "versao": "2026-09-23",
-  "url_fonte": "https://data.humdata.org/dataset/emdat-country-profiles",
-  "url_download": "https://data.humdata.org/dataset/74163686-a029-4e27-8fbf-c5bfcd13f953/resource/c5ce40d6-07b1-4f36-955a-d6196436ff6b/download/emdat-country-profiles_2026_09_23.xlsx",
-  "baixado_em_utc": "2026-09-29T21:46:26+00:00",
-  "citacao": "EM-DAT, CRED / UCLouvain, Brussels, Belgium -- www.emdat.be",
-  "observacao": "Perfil agregado anual por país e subtipo; sujeito aos termos de uso EM-DAT."
-}

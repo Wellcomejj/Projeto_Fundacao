@@ -172,13 +172,12 @@ def _ler_preditores(
 ) -> tuple[dict[tuple[str, int], dict[str, float]], list[str]]:
     cabecalhos, linhas = _ler_csv(caminho)
     coluna_data = _coluna(cabecalhos, ("year", "ano", "date", "data", "time", "period", "periodo"))
-    coluna_local = _coluna(
-        cabecalhos,
-        ("iso3", "iso", "iso code", "country code", "location", "country", "local", "pais", "region", "regiao"),
-    )
-    coluna_variavel = _coluna(cabecalhos, ("variable", "indicator", "variavel", "indicador", "series", "measure", "medida", "name"))
-    coluna_valor = _coluna(cabecalhos, ("value", "valor", "observation", "observacao", "measurement", "medicao"))
-    coluna_unidade = _coluna(cabecalhos, ("unit", "units", "unidade", "unidades"), obrigatoria=False)
+   # coluna_local = _coluna(
+   #     ("iso3", "iso", "iso code", "country code", "location", "country", "local", "pais", "region", "regiao"),
+   # )
+    coluna_variavel = _coluna(cabecalhos, ("titulo"))
+    coluna_valor = _coluna(cabecalhos, ("titulo"))
+    coluna_unidade = _coluna(cabecalhos, ("titulo"), obrigatoria=False)
 
     termos = [_normalizar(parte) for parte in tema.split() if _normalizar(parte)]
     if not termos:
@@ -200,7 +199,8 @@ def _ler_preditores(
         if not variavel or not all(termo in variavel_normalizada for termo in termos):
             continue
         ano = _ano(linha.get(coluna_data))
-        local = _normalizar(linha.get(coluna_local) or "") or "global"
+      #  local = _normalizar(linha.get(coluna_local) or "") or "global" 
+        local = "global"
         valor = _numero(linha.get(coluna_valor))
         if ano is None or valor is None:
             continue
@@ -246,10 +246,10 @@ def _ler_eventos(
 ) -> tuple[set[tuple[str, int]], int, set[str]]:
     cabecalhos, linhas = _ler_csv(caminho)
     coluna_ano = _coluna(cabecalhos, ("start year", "start_year", "year", "ano", "start date", "data inicio"))
-    coluna_local = _coluna(
-        cabecalhos,
-        ("iso3", "iso", "iso code", "country code", "country", "pais", "location", "local"),
-    )
+  #  coluna_local = _coluna(
+  #      cabecalhos,
+  #      ("iso3", "iso", "iso code", "country code", "country", "pais", "location", "local"),
+   # )
     coluna_mortes = _coluna(cabecalhos, ("total deaths", "total_deaths", "deaths", "mortes"), obrigatoria=False)
     coluna_afetados = _coluna(cabecalhos, ("total affected", "total_affected", "affected", "afetados"), obrigatoria=False)
     coluna_prejuizo = _coluna(
@@ -280,7 +280,8 @@ def _ler_eventos(
             _reportar_progresso(progresso, percentual, f"Lendo e agregando impactos EM-DAT: {indice}/{len(linhas)} linhas.")
             ultimo_percentual = percentual
         ano = _ano(linha.get(coluna_ano))
-        local = _normalizar(linha.get(coluna_local) or "") or "global"
+      #  local = _normalizar(linha.get(coluna_local) or "") or "global"
+        local = "global"
         if ano is None:
             continue
         anos.append(ano)
